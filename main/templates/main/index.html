@@ -1,0 +1,18 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>{{title}}</h1>
+        <p>asdok1o k1o2k</p>
+        <button class="btn btn-warning">кнопка</button>
+        {% for item in values %}
+            <p>{{item}}</p>
+        {% endfor %}
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+Форма удаления поста
+{% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1> Форма удаления поста</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% if request.user.is_superuser %}
+        <button class="btn btn-success", type="submit"> Удалить запись </button>
+        {% else %}
+        <p>Здесь у админа кнопка удаления поста</p>
+        {% endif %}
+
+    </form>
+</div>
+{% endblock %}

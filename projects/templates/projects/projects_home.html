@@ -1,0 +1,27 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+Мои проекты
+{% endblock %}
+
+{% block content %}
+  <div class="features">
+    <h1>Мои проекты:</h1>
+      <div>
+          {% if request.user.is_superuser %}
+          <a href="{% url 'create_post' %}"><button class="bt btn-info">Добавить проект <i class="fa-solid fa-plus"></i></button></a>
+          {% else %}
+          <p>Здесь у админа кнопка добавления поста</p>
+          {% endif %}
+      </div>
+    {%for item in posts%}
+      <div class="alert alert-warning">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.anons }}</p>
+          <a href="{% url 'project_detail' item.id %}", class="btn btn-success"> Показать полностью </a>
+      </div>
+    {% endfor %}
+
+
+  </div>
+{% endblock %}

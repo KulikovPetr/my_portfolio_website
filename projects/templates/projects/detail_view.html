@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+{{ article.title }}
+{% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.full_text }}</p>
+    {% if article.video_text != '' %}
+    <iframe width="640" height="480" src="{{ article.video_text }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br>
+    {% endif %}
+    {% if request.user.is_superuser %}
+    <a href="{% url 'project_update' article.id %}" class="btn btn-info"> Редактировать запись </a>
+    <a href="{% url 'project_delete' article.id %}" class="btn btn-danger"> Удалить запись </a>
+    {% else %}
+    <p>Здесь у админа кнопки редактирования и удаления поста</p>
+    {% endif %}
+
+</div>
+{% endblock %}
